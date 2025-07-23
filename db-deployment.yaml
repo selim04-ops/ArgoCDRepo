@@ -1,45 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: postgres
+  ports:
+    - port: 5432
+      targetPort: 5432
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysqlmysql
+  name: postgres-deployment
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysqlmysql
+      app: postgres
   template:
     metadata:
       labels:
-        app: mysqlmysql
+        app: postgres
     spec:
       containers:
-        - name: mysql
-          image: mysql:8.0
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: "salim"
-            - name: MYSQL_DATABASE
-              value: "pfedb"
-          ports:
-            - containerPort: 3306
-          volumeMounts:
-            - name: mysql-storage
-              mountPath: /var/lib/mysql
-      volumes:
-        - name: mysql-storage
-          persistentVolumeClaim:
-            claimName: mysql-pvcc
----
-apiVersion: v1
-kind: Service
-metadata:
-  namespace: default
-  name: mysqlmysql
-spec:
-  selector:
-    app: mysqlmysql
-  ports:
-    - port: 3306
-      targetPort: 3306
-  type: ClusterIP
+      - name: postgres
+        image: postgres:15  # Use a specific PostgreSQL version
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          value: "AMIdb"
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "admin"
+      restartPolicy: Always

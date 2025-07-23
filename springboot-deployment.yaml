@@ -14,40 +14,39 @@ spec:
         app: ami-assurance-app
     spec:
       containers:
-      - name: ami-assurance-app
-        image: salimbouazizi/ami:0.0.1
-        ports:
-        - containerPort: 8044  
-        env:
-        - name: SPRING_DATASOURCE_URL
-          value: "jdbc:postgresql://postgres-service.default.svc.cluster.local:5432/AMIdb"
-        - name: SPRING_DATASOURCE_USERNAME
-          value: "postgres"
-        - name: SPRING_DATASOURCE_PASSWORD
-          value: "admin"
-        - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
-          value: "org.postgresql.Driver"
-        - name: SPRING_JPA_DATABASE_PLATFORM
-          value: "org.hibernate.dialect.PostgreSQLDialect"
-        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
-          value: "update"
-        - name: SPRING_JPA_SHOW_SQL
-          value: "true"
-        - name: SPRING_MAIL_HOST
-          value: "smtp.gmail.com"
-        - name: SPRING_MAIL_PORT
-          value: "587"
-        - name: SPRING_MAIL_USERNAME
-          value: "salimbouazizi42@gmail.com"
-        - name: SPRING_MAIL_PASSWORD
-          value: "ivvscuosauajivpe"
-        - name: SPRING_MAIL_PROTOCOL
-          value: "smtp"
-        - name: SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH
-          value: "true"
-        - name: SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE
-          value: "true"
-      restartPolicy: Always
+        - name: ami-assurance-app
+          image: salimbouazizi/ami:0.0.1
+          ports:
+            - containerPort: 8044
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres-service:5432/AMIdb"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "admin"
+            - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+              value: "org.postgresql.Driver"
+            - name: SPRING_JPA_DATABASE_PLATFORM
+              value: "org.hibernate.dialect.PostgreSQLDialect"
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: "update"
+            - name: SPRING_JPA_SHOW_SQL
+              value: "true"
+            - name: SPRING_MAIL_HOST
+              value: "smtp.gmail.com"
+            - name: SPRING_MAIL_PORT
+              value: "587"
+            - name: SPRING_MAIL_USERNAME
+              value: "salimbouazizi42@gmail.com"
+            - name: SPRING_MAIL_PASSWORD
+              value: "ivvscuosauajivpe"
+            - name: SPRING_MAIL_PROTOCOL
+              value: "smtp"
+            - name: SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH
+              value: "true"
+            - name: SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE
+              value: "true"
 ---
 apiVersion: v1
 kind: Service
@@ -55,10 +54,10 @@ metadata:
   name: ami-assurance-service
   namespace: default
 spec:
-  type: NodePort
   selector:
     app: ami-assurance-app
   ports:
-    - port: 8044  # Matches the server.port from application.properties
+    - port: 8044
       targetPort: 8044
       nodePort: 30007
+  type: NodePort

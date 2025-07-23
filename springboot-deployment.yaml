@@ -17,7 +17,7 @@ spec:
       - name: ami-assurance-app
         image: salimbouazizi/ami:0.0.1
         ports:
-        - containerPort: 8044  # Updated to match server.port from application.properties
+        - containerPort: 8044  
         env:
         - name: SPRING_DATASOURCE_URL
           value: "jdbc:postgresql://<postgres-service>:5432/AMIdb"

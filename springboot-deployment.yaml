@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ami-assurance-app
-          image: salimbouazizi/ami_assurance:0.0.1
+          image: salimbouazizi/ami_assurance:0.0.2
           ports:
             - containerPort: 8044
           env:

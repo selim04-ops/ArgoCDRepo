@@ -20,7 +20,7 @@ spec:
             - containerPort: 8044
           env:
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://postgres-service:5432/AMIdb"  
+              value: "jdbc:postgresql://postgres-service:5432/AMIdb"
             - name: SPRING_DATASOURCE_USERNAME
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD
@@ -33,6 +33,7 @@ spec:
               value: "update"
             - name: SPRING_JPA_SHOW_SQL
               value: "true"
+            # Email SMTP Gmail
             - name: SPRING_MAIL_HOST
               value: "smtp.gmail.com"
             - name: SPRING_MAIL_PORT

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: salimbouazizi/pfe_r_front:0.0.2
+        image: marwenhm/ami_assurance_frant:0.0.1
         ports:
         - containerPort: 80
 ---

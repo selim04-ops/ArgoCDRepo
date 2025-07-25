@@ -20,7 +20,7 @@ spec:
             - containerPort: 8044
           env:
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://10.110.93.64:5432/AMIdb"
+              value: "jdbc:postgresql://57.154.69.65:30008/AMIdb"
             - name: SPRING_DATASOURCE_USERNAME
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD

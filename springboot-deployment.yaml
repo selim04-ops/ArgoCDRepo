@@ -33,6 +33,8 @@ spec:
               value: "update"
             - name: SPRING_JPA_SHOW_SQL
               value: "true"
+            - name: SPRING_SQL_INIT_DATA_LOCATIONS
+              value: "classpath:data.sql"
             # Email SMTP Gmail
             - name: SPRING_MAIL_HOST
               value: "smtp.gmail.com"

@@ -12,4 +12,3 @@ spec:
   hostPath:
     path: /home/azureuser/mydb
     type: DirectoryOrCreate
-#ligngn

@@ -27,15 +27,21 @@ spec:
         app: postgres
     spec:
       containers:
-      - name: postgres
-        image: postgres:15  # Use a specific PostgreSQL version
-        ports:
-        - containerPort: 5432
-        env:
-        - name: POSTGRES_DB
-          value: "AMIdb"
-        - name: POSTGRES_USER
-          value: "postgres"
-        - name: POSTGRES_PASSWORD
-          value: "admin"
-      restartPolicy: Always
+        - name: postgres
+          image: postgres:15
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: "AMIdb"
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "admin"
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-storage
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: mysql-pvcc

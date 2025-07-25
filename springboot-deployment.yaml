@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ami-assurance-app
-          image: marwenhm/amiiassurancebackend:6
+          image: marwenhm/ranimebackendami:1
           ports:
             - containerPort: 8044
           env:

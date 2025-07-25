@@ -20,11 +20,34 @@ spec:
             - containerPort: 8044
           env:
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://10.109.43.161:5432/AMIdb"
+              value: "jdbc:postgresql://postgres-service:5432/AMIdb"  # ✅ DNS du service PostgreSQL
             - name: SPRING_DATASOURCE_USERNAME
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD
-              value: "salim"
+              value: "admin"
+            - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+              value: "org.postgresql.Driver"
+            - name: SPRING_JPA_DATABASE_PLATFORM
+              value: "org.hibernate.dialect.PostgreSQLDialect"
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: "update"
+            - name: SPRING_JPA_SHOW_SQL
+              value: "true"
+            - name: SPRING_MAIL_HOST
+              value: "smtp.gmail.com"
+            - name: SPRING_MAIL_PORT
+              value: "587"
+            - name: SPRING_MAIL_USERNAME
+              value: "salimbouazizi42@gmail.com"
+            - name: SPRING_MAIL_PASSWORD
+              value: "ivvscuosauajivpe"
+            - name: SPRING_MAIL_PROTOCOL
+              value: "smtp"
+            - name: SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH
+              value: "true"
+            - name: SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE
+              value: "true"
+
 ---
 apiVersion: v1
 kind: Service

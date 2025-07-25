@@ -35,6 +35,8 @@ spec:
               value: "true"
             - name: SPRING_SQL_INIT_DATA_LOCATIONS
               value: "classpath:data.sql"
+            - name: SPRING_SQL_INIT_MODE
+              value: "always"
             # Email SMTP Gmail
             - name: SPRING_MAIL_HOST
               value: "smtp.gmail.com"

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: marwenhm/amipferanime:1
+        image: marwenhm/amiapferanime:1
         ports:
         - containerPort: 80
 ---
